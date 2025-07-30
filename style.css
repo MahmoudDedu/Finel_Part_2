@@ -1,0 +1,367 @@
+
+/*
+========================================
+ملف التنسيق النهائي والموحد للكتاب
+========================================
+*/
+
+/*
+========================================
+1. تنسيقات الصفحة والجسم العامة
+========================================
+*/
+body {
+    font-family: 'Amiri', serif;
+    background-color: #f3f4f6; /* Tailwind: bg-gray-100 */
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 2.5cm 2cm;
+    margin: 1.5rem auto;
+    background: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Tailwind: shadow-lg */
+    position: relative;
+    font-size: 14pt;
+    line-height: 2;
+    box-sizing: border-box;
+}
+
+.content {
+    text-align: justify;
+    flex-grow: 1; /* For flex-based page layouts */
+}
+
+.page-number {
+    position: absolute;
+    bottom: 1.5cm;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12pt;
+}
+
+/*
+========================================
+2. تنسيقات النصوص والعناوين
+========================================
+*/
+p, div, li {
+    margin-bottom: 0.5rem;
+}
+
+p:not(.no-indent) {
+    text-indent: 1cm;
+    margin-bottom: 0.5em;
+}
+
+p.no-indent {
+    text-indent: 0;
+}
+
+.hanging-indent {
+    padding-right: 2.5rem;
+    text-indent: -2.5rem;
+}
+
+h1, h2, h3, h4,
+.chapter-title, .section-title, .sub-title, .main-title, .volume-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.main-title { font-size: 22pt; margin-top: 1cm; margin-bottom: 1.5rem; }
+.chapter-title { font-size: 20pt; margin-bottom: 1cm; }
+.section-title { font-size: 18pt; margin-bottom: 1cm; }
+.sub-title { font-size: 16pt; margin-bottom: 1.5cm; }
+.sub-heading { font-weight: bold; text-align: right; margin-bottom: 1rem; }
+
+.content h4 {
+    text-align: right;
+    margin-top: 1em;
+    margin-bottom: 0.75em;
+    text-indent: 0;
+}
+
+/*
+========================================
+3. تنسيقات القوائم
+========================================
+*/
+.content ul, .content ol {
+    list-style-type: none;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+.content li .list-marker {
+    display: inline-block;
+    width: 1cm;
+    text-indent: 0;
+}
+
+.content > ul > li, .content > ol > li {
+    padding-right: 1cm;
+    text-indent: -1cm;
+    margin-bottom: 0.5em;
+}
+
+.content .sub-list {
+    padding-right: 1cm;
+}
+
+.content .sub-list li {
+    padding-right: 1cm;
+    text-indent: -1cm;
+}
+
+/*
+========================================
+4. تنسيقات الجداول العامة
+========================================
+*/
+
+/* -- جدول الملاحق (صفحات 1061+) -- */
+.annex-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black;
+    margin-top: 1rem;
+    font-size: 12pt;
+    line-height: 1.5;
+}
+.annex-table th, .annex-table td {
+    border: 1px solid black;
+    padding: 0.5rem;
+    text-align: left;
+    vertical-align: top;
+}
+.annex-table th {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+/* -- جدول البيانات (صفحات 1051+) -- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    direction: ltr;
+}
+.data-table td, .data-table th {
+    border: 1px solid #ccc;
+    padding: 6px;
+    vertical-align: top;
+    text-align: left;
+    line-height: 1.5;
+}
+.data-table th {
+    background-color: #f2f2f2;
+}
+
+/* -- جدول منسق (صفحات 1131+) -- */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    text-align: center;
+}
+.styled-table th, .styled-table td {
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+
+/*
+========================================
+5. تنسيقات بنود التعريفة المختلفة
+========================================
+*/
+
+/* -- تنسيق بنود التعريفة بنظام Flexbox (صفحات 1011+) -- */
+.tariff-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    text-indent: 0;
+    margin-bottom: 0.25em;
+    line-height: 1.8;
+}
+.tariff-item .tariff-code {
+    flex-basis: 7em;
+    flex-shrink: 0;
+    text-align: left;
+    font-weight: bold;
+}
+.tariff-item .tariff-code.sub {
+    padding-right: 2.5em;
+}
+.tariff-item .tariff-description {
+    flex-grow: 1;
+}
+
+/* -- تنسيق بنود التعريفة بنظام Grid (صفحات 1311+) -- */
+/* استخدم هذا الكلاس في HTML: <div class="tariff-grid"> */
+.tariff-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1rem;
+    margin-bottom: 1rem;
+}
+.tariff-grid .code, .tariff-grid .description {
+    padding: 0.25rem 0;
+}
+.tariff-grid .code {
+    font-weight: bold;
+    white-space: nowrap;
+}
+.tariff-grid .sub { padding-right: 2rem; }
+.tariff-grid .sub-sub { padding-right: 4rem; }
+
+/* -- تنسيق بنود التعريفة بنظام المسافات البادئة (صفحات 1221+) -- */
+/* استخدم هذا الكلاس في HTML: <div class="tariff-indented-list"> */
+.tariff-indented-list {
+    text-indent: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.tariff-indented-list p {
+    text-indent: 0;
+    margin-bottom: 0.25em;
+}
+.tariff-indented-list .level-1 { padding-right: 1cm; }
+.tariff-indented-list .level-2 { padding-right: 2cm; }
+.tariff-indented-list .level-3 { padding-right: 3cm; }
+
+
+/*
+========================================
+6. تنسيقات متنوعة ومساعدة
+========================================
+*/
+
+/* -- تنسيق المحتوى بالاتجاه LTR -- */
+.ltr-content, .ltr-text {
+    direction: ltr;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+}
+.ltr-content p, .ltr-content div,
+.ltr-text p, .ltr-text div {
+    text-indent: 0;
+}
+.ltr-content .page-number {
+    font-family: 'Amiri', serif;
+}
+
+/* -- خلايا الجداول -- */
+.local-name-cell { display: flex; justify-content: space-between; }
+.local-name-cell span:last-child { text-align: right; padding-left: 10px; }
+.country-name { display: inline-block; width: 45%; }
+.local-name-val { display: inline-block; width: 45%; font-weight: bold; }
+
+/* -- فواصل -- */
+hr {
+    border: none;
+    border-top: 0.5px solid black;
+    margin: 1cm 3cm;
+}
+.dashed-line {
+    border-top: 1px dashed #888;
+    margin: 1rem 5rem;
+}
+
+/* -- قائمة الأخشاب -- */
+.wood-list {
+    column-count: 2;
+    column-gap: 2rem;
+    direction: ltr;
+    text-align: left;
+    font-size: 12pt;
+    line-height: 1.6;
+}
+.wood-list div {
+    break-inside: avoid;
+}
+
+/* -- كلاسات مساعدة -- */
+.highlight-doubt { background-color: yellow; }
+strong, b { font-weight: bold; }
+/*
+========================================
+Additions for Indented Lists and Tariff Tables (pages 1221+)
+========================================
+*/
+
+/* -- Chapter and Section Titles -- */
+.chapter-title {
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5cm;
+}
+
+.section-title {
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1cm;
+}
+
+/* -- Headings within content -- */
+.content h4 {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 1em;
+    margin-bottom: 0.75em;
+    text-indent: 0;
+}
+
+/* -- Hanging-indent list styling -- */
+.content > ul > li,
+.content > ol > li {
+    padding-right: 1cm;
+    text-indent: -1cm;
+    margin-bottom: 0.5em;
+}
+
+.content li .list-marker {
+    display: inline-block;
+    width: 1cm;
+    text-indent: 0;
+}
+
+.content .sub-list {
+    padding-right: 1cm; /* Indent for the whole sub-list block */
+}
+
+.content .sub-list li {
+    padding-right: 1cm;
+    text-indent: -1cm;
+}
+
+/* -- Special layout for tariff code information -- */
+.tariff-table {
+    text-indent: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.tariff-table p {
+    text-indent: 0;
+    margin-bottom: 0.25em;
+}
+
+.tariff-table .level-1 { padding-right: 1cm; }
+.tariff-table .level-2 { padding-right: 2cm; }
+.tariff-table .level-3 { padding-right: 3cm; }
+
+
+/* -- Horizontal rule styling -- */
+hr {
+    border: none;
+    border-top: 0.5px solid black;
+    margin: 1cm 3cm;
+}
